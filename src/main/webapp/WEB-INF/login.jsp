@@ -28,9 +28,9 @@
 
         <div class="form-group ">
             <span></span>
-            <input name="username" type="text" class="form-control" placeholder="Username"
+            <input name="username" type="text" id="username" class="form-control" placeholder="Username"
                    autofocus="true"/>
-            <input name="password" type="password" class="form-control" placeholder="Password"/>
+            <input name="password" type="password" id="password" class="form-control" placeholder="Password"/>
             <span></span>
 
             <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>

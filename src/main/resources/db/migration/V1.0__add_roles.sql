@@ -1,0 +1,7 @@
+insert role(id, name)
+VALUES
+(1,'SUPER_ADMIN'),
+(2,'CUSTOMER_ADMIN'),
+(3,'CUSTOMER_USER'),
+(4,'DELIVERY_USER'),
+(5,'DELIVERY_ADMIN')

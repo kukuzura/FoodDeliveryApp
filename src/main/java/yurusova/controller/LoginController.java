@@ -44,7 +44,7 @@ public class LoginController {
         if (logout != null)
             model.addAttribute("msg", "You have been logged out successfully.");
 
-        return "login.jsp";
+        return "login";
     }
 
     private boolean isAuthenticated() {

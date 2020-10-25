@@ -20,15 +20,15 @@ public class AppController {
     UserRepository userRepository;
 
 
-    @RequestMapping({"/index", "/"})
+    @RequestMapping({"/main", "/"})
     public String index() {
-        Role role1 = new Role();
+      /*  Role role1 = new Role();
         role1.setName("second role");
-        roleRepository.save(role1);
+        roleRepository.save(role1);*/
         List<Role> roles = roleRepository.findAll();
         for (Role role : roles) {
             System.out.println(role.getName());
         }
-        return "index.jsp";
+        return "index";
     }
 }
