@@ -20,10 +20,8 @@ public class AppController {
     UserRepository userRepository;
 
 
-    @RequestMapping("/index")
+    @RequestMapping({"/index", "/"})
     public String index() {
-
-
         Role role1 = new Role();
         role1.setName("second role");
         roleRepository.save(role1);
