@@ -17,88 +17,75 @@ import java.util.Collection;
 import java.util.List;
 
 @Component
-public class AuthorizationHandler extends SimpleUrlAuthenticationSuccessHandler
-{
-	private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
+public class AuthorizationHandler extends SimpleUrlAuthenticationSuccessHandler {
 
-	@Override
-	protected void handle(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
-			throws IOException
-	{
-		String targetUrl = determineTargetUrl(authentication);
+    private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
-		if (response.isCommitted()) {
-			System.out.println("Can't redirect");
-			return;
-		}
+    @Override
+    protected void handle(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
+            throws IOException {
+        String targetUrl = determineTargetUrl(authentication);
 
-		redirectStrategy.sendRedirect(request, response, targetUrl);
-	}
+        if (response.isCommitted()) {
+            System.out.println("Can't redirect");
+            return;
+        }
 
-	protected String determineTargetUrl(Authentication authentication) {
-		String url = "";
+        redirectStrategy.sendRedirect(request, response, targetUrl);
+    }
 
-		Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+    protected String determineTargetUrl(Authentication authentication) {
+        String url = "";
 
-		List<String> roles = new ArrayList<String>();
+        Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
 
-		for (GrantedAuthority a : authorities) {
-			roles.add(a.getAuthority());
-		}
-		if (isDeliveryAdmin(roles))
-			{ url = "/DeliveryAdmin"; }
-		else if (isCustomerAdmin(roles))
-			{ url = "/CustomerAdmin"; }
-		else if (isSuperAdmin(roles))
-		{ url = "/SuperAdmin"; }
-		else if (isDeliveryUser(roles))
-		{ url = "/DeliveryUser"; }
-		else if (isCustomerUser(roles))
-		{ url = "/CustomerUser"; }
-		return url;
-	}
+        List<String> roles = new ArrayList<String>();
 
-	private boolean isSuperAdmin(List<String> roles) {
-		if (roles.contains("SUPER_ADMIN")) {
-			return true;
-		}
-		return false;
-	}
-	private boolean isCustomerAdmin(List<String> roles) {
-		if (roles.contains("CUSTOMER_ADMIN")) {
-			return true;
-		}
-		return false;
-	}
+        for (GrantedAuthority a : authorities) {
+            roles.add(a.getAuthority());
+        }
 
-	private boolean isDeliveryAdmin(List<String> roles) {
-		if (roles.contains("DELIVERY_ADMIN")) {
-			return true;
-		}
-		return false;
-	}
+        if (isDeliveryAdmin(roles)) {
+            url = "/DeliveryAdmin";
+        } else if (isCustomerAdmin(roles)) {
+            url = "/CustomerAdmin";
+        } else if (isSuperAdmin(roles)) {
+            url = "/SuperAdmin";
+        } else if (isDeliveryUser(roles)) {
+            url = "/DeliveryUser";
+        } else if (isCustomerUser(roles)) {
+            url = "/CustomerUser";
+        }
+        return url;
+    }
 
-	private boolean isDeliveryUser(List<String> roles) {
-		if (roles.contains("DELIVERY_USER")) {
-			return true;
-		}
-		return false;
-	}
+    private boolean isSuperAdmin(List<String> roles) {
+        return roles.contains("SUPER_ADMIN");
+    }
 
-	private boolean isCustomerUser(List<String> roles) {
-		if (roles.contains("CUSTOMER_USER")) {
-			return true;
-		}
-		return false;
-	}
+    private boolean isCustomerAdmin(List<String> roles) {
+        return roles.contains("CUSTOMER_ADMIN");
+    }
 
-	public void setRedirectStrategy(RedirectStrategy redirectStrategy) {
-		this.redirectStrategy = redirectStrategy;
-	}
+    private boolean isDeliveryAdmin(List<String> roles) {
+        return roles.contains("DELIVERY_ADMIN");
+    }
 
-	protected RedirectStrategy getRedirectStrategy() {
-		return redirectStrategy;
-	}
+    private boolean isDeliveryUser(List<String> roles) {
+        return roles.contains("DELIVERY_USER");
+    }
 
-	// Get the role of logged in use
+    private boolean isCustomerUser(List<String> roles) {
+        return roles.contains("CUSTOMER_USER");
+    }
+
+    public void setRedirectStrategy(RedirectStrategy redirectStrategy) {
+        this.redirectStrategy = redirectStrategy;
+    }
+
+    protected RedirectStrategy getRedirectStrategy() {
+        return redirectStrategy;
+    }
+
+    // Get the role of logged in use
 }
