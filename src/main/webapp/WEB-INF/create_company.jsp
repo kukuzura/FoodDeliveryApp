@@ -16,6 +16,10 @@
         <div>
             <input type="hidden" name="id" />
         </div>
+        <select name="type">
+            <option value="FOOD">Delivery Company</option>
+            <option value="CUSTOMER">Customer Company</option>
+        </select>
         <div>
             <input type="text" name="name" value="name" placeholder="Name"/>
         </div>

@@ -1,10 +1,15 @@
 package yurusova.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.sql.Time;
 import java.util.List;
 
 @Entity
+@Getter
+@Setter
 public class FoodCompany {
 
     @Id
@@ -15,8 +20,15 @@ public class FoodCompany {
 
     private Time timeRestriction;
 
+    @OneToOne
+    @JoinColumn(name = "admin_id", referencedColumnName = "id")
+    private User admin;
+
     @OneToMany
     private List<Menu> menu;
 
 
+    public FoodCompany()
+    {
+    }
 }

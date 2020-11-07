@@ -7,17 +7,22 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import yurusova.dto.CompanyCreateUpdateDTO;
-import yurusova.service.CompanyService;
+import yurusova.service.CustomerCompanyService;
+import yurusova.service.DefaultCompanyService;
 
 @Controller
-public class CompanyController {
+public class AdminController
+{
+    @Autowired
+    DefaultCompanyService companyService;
 
     @Autowired
-    CompanyService companyService;
+    DefaultCompanyService defaultCompanyService;
 
     @RequestMapping(value = "/company_list", method = RequestMethod.GET)
     public String getAll(Model model) {
-        model.addAttribute("companies",companyService.getAll());
+        model.addAttribute("customerCompanies",companyService.getCustomerCompanies());
+        model.addAttribute("foodCompanies",companyService.getFoodCompanies());
         return "company_list";
     }
 

@@ -2,9 +2,9 @@ package yurusova.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import yurusova.entity.Company;
-import yurusova.entity.Role;
+import yurusova.entity.FoodCompany;
 
 @Repository
-public interface CompanyRepository extends JpaRepository<Company,Long> {
+public interface FoodCompanyRepository extends JpaRepository<FoodCompany,Long>
+{
 }

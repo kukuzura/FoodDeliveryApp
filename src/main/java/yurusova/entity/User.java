@@ -20,7 +20,11 @@ public class User implements Serializable
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id;
 
-	@ManyToMany(mappedBy = "users")
+	@ManyToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	@JoinTable(name="user_role",
+			joinColumns = {@JoinColumn(name="user_id", referencedColumnName="id")},
+			inverseJoinColumns = {@JoinColumn(name="role_id", referencedColumnName="id")}
+	)
 	private List<Role> roles;
 
 	private String username;
@@ -59,13 +63,5 @@ public class User implements Serializable
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public User getAdmin() {
-		return admin;
-	}
-
-	public void setAdmin(User admin) {
-		this.admin = admin;
 	}
 }
