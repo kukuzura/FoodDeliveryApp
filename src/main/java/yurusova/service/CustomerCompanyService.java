@@ -27,6 +27,11 @@ public class CustomerCompanyService
         companyRepository.save(company);
     }
 
+    public void removeCompany(long id){
+        companyRepository.deleteById(id);
+    }
+
+
     public List<Company> getAll(){
         return companyRepository.findAll();
     }

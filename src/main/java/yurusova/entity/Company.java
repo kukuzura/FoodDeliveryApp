@@ -18,13 +18,13 @@ public class Company {
 
     private String name;
 
-    @OneToMany
+    @OneToMany()
     private List<Office> office;
 
     @ManyToMany(mappedBy = "companies")
     private List<Menu> menu;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "admin_id", referencedColumnName = "id")
     private User admin;
 

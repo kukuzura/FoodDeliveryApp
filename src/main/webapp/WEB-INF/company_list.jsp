@@ -5,13 +5,16 @@
   Time: 21:16
   To change this template use File | Settings | File Templates.
 --%>
-
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Список клиентов</title>
 </head>
+<script>
+    <%@include file="/WEB-INF/js/deleteCompany.js" %>
+</script>
 <body>
 <form action="/create_company" method="get">
     <button type="submit">Создать</button>
@@ -28,7 +31,7 @@
         <th></th>
     </tr>
     <c:forEach items="${customerCompanies}" var="company">
-        <tr>
+        <tr id="${company.id}">
             <td>${company.id}</td>
             <td>${company.name}</td>
             <td>${company.admin.username}</td>
@@ -36,7 +39,7 @@
                 <button class="table-button" href="/edit/${c.id}">Изменить</button>
             </td>
             <td>
-                <button class="table-button" href="/delete/${c.id}">Удалить</button>
+                    <button  onclick="deleteCompany(${company.id},'CUSTOMER')"  class="table-button">Удалить</button>
             </td>
         </tr>
     </c:forEach>
@@ -53,7 +56,7 @@
         <th></th>
     </tr>
     <c:forEach items="${foodCompanies}" var="company">
-        <tr>
+        <tr id=${company.id}>
             <td>${company.id}</td>
             <td>${company.name}</td>
             <td>${company.admin.username}</td>
@@ -61,7 +64,7 @@
                 <button class="table-button" href="/edit/${c.id}">Изменить</button>
             </td>
             <td>
-                <button class="table-button" href="/delete/${c.id}">Удалить</button>
+                    <button onclick="deleteCompany(${company.id},'FOOD')" class="table-button">Удалить</button>
             </td>
         </tr>
     </c:forEach>

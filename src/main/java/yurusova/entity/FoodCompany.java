@@ -20,14 +20,12 @@ public class FoodCompany {
 
     private Time timeRestriction;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "admin_id", referencedColumnName = "id")
     private User admin;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.REMOVE)
     private List<Menu> menu;
-
-
     public FoodCompany()
     {
     }

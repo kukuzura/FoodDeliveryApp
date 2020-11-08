@@ -31,4 +31,8 @@ public class FoodCompanyService
 	public List<FoodCompany> getAll(){
 		return companyRepository.findAll();
 	}
+
+	public void removeCompany(long id){
+		companyRepository.deleteById(id);
+	}
 }
