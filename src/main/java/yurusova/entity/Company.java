@@ -18,7 +18,7 @@ public class Company {
 
     private String name;
 
-    @OneToMany()
+    @OneToMany(mappedBy = "company")
     private List<Office> office;
 
     @ManyToMany(mappedBy = "companies")

@@ -11,11 +11,40 @@
 <html>
 <head>
     <title>Список клиентов</title>
+    <link rel="stylesheet" href="<c:url value = "/resources/css/bootstrap.min.css"/>"/>
+    <link rel="stylesheet" href="<c:url value = "/resources/css/Login-Form-Clean.css"/>"/>
 </head>
 <script>
     <%@include file="/WEB-INF/js/deleteCompany.js" %>
 </script>
 <body>
+
+
+<nav class="navbar navbar-light navbar-expand-md navigation-clean" style="background-color: #8270c9;">
+    <div class="container"><a class="navbar-brand" href="#" style="color: rgb(227,227,227);">Company Name</a>
+        <button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggler"><span class="sr-only">Toggle navigation</span><span
+                class="navbar-toggler-icon"></span></button>
+        <div
+                class="collapse navbar-collapse" id="navcol-1">
+            <ul class="nav navbar-nav ml-auto">
+                <li role="presentation" class="nav-item"><a class="nav-link active" href="#" style="color: #e3e3e3;">First
+                    Item</a></li>
+                <li role="presentation" class="nav-item"><a class="nav-link" href="#" style="color: #e3e3e3;">Second
+                    Item</a></li>
+                <li role="presentation" class="nav-item"><a class="nav-link" href="#" style="color: #e3e3e3;">Third
+                    Item</a></li>
+                <li class="nav-item dropdown"><a data-toggle="dropdown" aria-expanded="false"
+                                                 class="dropdown-toggle nav-link" href="#" style="color: #e3e3e3;">Dropdown </a>
+                    <div role="menu" class="dropdown-menu"><a role="presentation" class="dropdown-item" href="#">First
+                        Item</a><a role="presentation" class="dropdown-item" href="#">Second Item</a><a
+                            role="presentation" class="dropdown-item" href="#">Third Item</a></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
 <form action="/create_company" method="get">
     <button type="submit">Создать</button>
 </form>
