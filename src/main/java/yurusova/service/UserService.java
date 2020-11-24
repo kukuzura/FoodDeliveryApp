@@ -36,4 +36,8 @@ public class UserService
 		roles.add(roleService.getRoleByName(roleName));
 		return roles;
 	}
+
+	public User save(User user){
+		return userRepository.save(user);
+	}
 }
