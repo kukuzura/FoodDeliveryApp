@@ -1,5 +1,7 @@
 package yurusova.entity;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.format.datetime.standard.DateTimeContext;
 
 import javax.persistence.*;
@@ -7,6 +9,8 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
+@Getter
+@Setter
 public class MenuOption {
 
     @Id
@@ -18,6 +22,9 @@ public class MenuOption {
     String description;
 
     Double cost;
+
+    @ManyToOne
+    FoodCompany foodCompany;
 
     @ManyToMany
     @JoinTable(

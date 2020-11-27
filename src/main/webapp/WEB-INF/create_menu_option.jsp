@@ -1,15 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: user
-  Date: 24.11.2020
-  Time: 12:49
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Create Employee</title>
+    <title>Create Menu Option</title>
     <link rel="stylesheet" href="<c:url value = "/resources/css/creation_form.css"/>"/>
     <link rel="stylesheet" href="<c:url value = "/resources/css/company_list.css"/>"/>
     <link rel="stylesheet" href="<c:url value = "/resources/css/bootstrap.min.css"/>"/>
@@ -31,28 +24,24 @@
     </div>
 </nav>
 <div class="form-style-6">
-    <form method="post">
-        <div>
-            <input type="hidden" name="id" />
-        </div>
-        <div>
-            <input type="text" name="surname" value="surname" placeholder="Surname"/>
-        </div>
-        <div>
-            <input type="text" name="name" value="name" placeholder="Name"/>
-        </div>
-        <div>
-            <input type="text" name="patronymic" value="patronymic" placeholder="Patronymic"/>
-        </div>
-        <div>
-            <input type="text" name="username" value="username" placeholder="Username"/>
-        </div>
-        <div>
-            <input type="password" name="password" placeholder="Password"/>
-        </div>
-        <div>
-            <input type="submit" value="Создать"></div>
-    </form>
+<form method="post">
+    <div>
+        <input type="hidden" name="id" />
+    </div>
+    <div>
+        <input type="text" name="name" value="name" placeholder="Name"/>
+    </div>
+    <div>
+        <input type="text" name="description" value="description" placeholder="Description"/>
+    </div>
+    <div>
+        <input type="number" name="cost" value="cost" placeholder="Cost"/>
+    </div>
+    <div>
+        <input type="submit" value="Создать">
+    </div>
+</form>
 </div>
+
 </body>
 </html>

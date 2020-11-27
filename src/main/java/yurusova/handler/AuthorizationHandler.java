@@ -50,7 +50,7 @@ public class AuthorizationHandler extends SimpleUrlAuthenticationSuccessHandler 
         } else if (isCustomerAdmin(roles)) {
             url = "/CustomerAdmin";
         } else if (isSuperAdmin(roles)) {
-            url = "/company_list";
+            url = "/customer_company_list";
         } else if (isDeliveryUser(roles)) {
             url = "/DeliveryUser";
         } else if (isCustomerUser(roles)) {

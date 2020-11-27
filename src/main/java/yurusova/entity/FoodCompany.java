@@ -26,6 +26,10 @@ public class FoodCompany {
 
     @OneToMany(cascade = CascadeType.REMOVE)
     private List<Menu> menu;
+
+    @OneToMany(cascade = CascadeType.REMOVE,mappedBy = "foodCompany")
+    private List<MenuOption> menuOptions;
+
     public FoodCompany()
     {
     }

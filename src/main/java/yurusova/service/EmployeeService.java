@@ -13,6 +13,8 @@ import yurusova.repository.UserRepository;
 
 import javax.annotation.Resource;
 import java.security.Principal;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -27,6 +29,9 @@ public class EmployeeService {
     @Resource
     private UserRepository userRepository;
 
+    @Resource
+    private RoleService roleService;
+
     public List<Employee> getAll(){
         List<Employee> employees = employeeRepository.findAll();
         return employees;
@@ -40,6 +45,7 @@ public class EmployeeService {
         User user = new User();
         user.setUsername(employeeCreateUpdateDTO.getUsername());
         user.setPassword(bCryptPasswordEncoder.encode(employeeCreateUpdateDTO.getPassword()));
+        user.setRoles(Collections.singletonList(roleService.getRoleByName("DELIVERY_USER")));
         user = userRepository.save(user);
         employee.setUser(user);
         employeeRepository.save(employee);

@@ -9,4 +9,5 @@ import yurusova.entity.User;
 public interface UserRepository extends CrudRepository<User, Long>, JpaSpecificationExecutor<User>
 {
 	User findByUsername(String username);
+
 }
