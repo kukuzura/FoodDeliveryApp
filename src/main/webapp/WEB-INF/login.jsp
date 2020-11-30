@@ -27,6 +27,7 @@
         <div class="form-group">
             <button class="btn btn-dark btn-block" type="submit">Log in</button>
         </div>
+        <label style="color: red">${errorMsg}</label>
         <a class="forgot" href="#">Forgot your email or password?</a></form>
 </div>
 </body>
