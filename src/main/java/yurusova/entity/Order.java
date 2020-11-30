@@ -1,10 +1,17 @@
 package yurusova.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.stereotype.Service;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
 @Entity
+@Getter
+@Setter
+@Table(name = "order_table")
 public class Order {
 
     @Id

@@ -48,13 +48,13 @@ public class AuthorizationHandler extends SimpleUrlAuthenticationSuccessHandler 
         if (isDeliveryAdmin(roles)) {
             url = "/delivery_admin";
         } else if (isCustomerAdmin(roles)) {
-            url = "/CustomerAdmin";
+            url = "/customer_admin";
         } else if (isSuperAdmin(roles)) {
             url = "/customer_company_list";
         } else if (isDeliveryUser(roles)) {
-            url = "/DeliveryUser";
+            url = "/delivery_employee_page";
         } else if (isCustomerUser(roles)) {
-            url = "/CustomerUser";
+            url = "/create_order";
         }
         return url;
     }

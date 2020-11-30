@@ -7,4 +7,6 @@ import yurusova.entity.Role;
 
 @Repository
 public interface CustomerCompanyRepository extends JpaRepository<Company,Long> {
+
+    Company findCompanyByAdmin_Username(String username);
 }

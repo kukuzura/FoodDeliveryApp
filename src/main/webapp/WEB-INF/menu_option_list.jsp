@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="<c:url value = "/resources/css/company_list.css"/>"/>
 </head>
 <nav class="navbar navbar-light navbar-expand-md navigation-clean" style="background-color: #8270c9;">
-    <div class="container"><a class="navbar-brand" href="#" style="color: rgb(227,227,227);"></a>
+    <div class="container"><a class="navbar-brand" href="#" style="color: rgb(227,227,227);">${company_name}</a>
         <button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggler"><span class="sr-only">Toggle navigation</span><span
                 class="navbar-toggler-icon"></span></button>
         <div
@@ -28,7 +28,7 @@
         </div>
     </div>
 </nav>
-<form action="/" method="get">
+<form action="/menu_options/add" method="get">
     <button class="table-button btn rounded-0 align-self-center" type="submit">Создать</button>
 </form>
 <body>

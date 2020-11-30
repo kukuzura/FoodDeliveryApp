@@ -41,5 +41,9 @@ public class UserService
 		return userRepository.save(user);
 	}
 
+	public User getAdminByUser(String username){
+		return userRepository.getAdminByUser_Username(username);
+	}
+
 
 }

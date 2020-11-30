@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import yurusova.dto.EmployeeCreateUpdateDTO;
 import yurusova.service.EmployeeService;
+import yurusova.service.FoodCompanyService;
 
 import javax.annotation.Resource;
 import java.security.Principal;
@@ -15,22 +16,27 @@ public class DeliveryAdminController {
     @Resource
     private EmployeeService employeeService;
 
+    @Resource
+    private FoodCompanyService foodCompanyService;
+
     @RequestMapping("/delivery_admin")
-    public String getDeliveryAdminPage(Model model){
-        model.addAttribute("employees",employeeService.getAll());
+    public String getDeliveryAdminPage(Model model,Principal principal){
+        model.addAttribute("employees",employeeService.getAllByAdmin(principal.getName()));
+        model.addAttribute("company_name",foodCompanyService.getCompanyNameByAdminUsername(principal.getName()));
         return "delivery_admin_page";
     }
 
-    @GetMapping("/create_employee")
-    public String getCreateUserPage(Model model){
+    @GetMapping("/create_delivery_employee")
+    public String getCreateUserPage(Model model,Principal principal){
         model.addAttribute("employee",new EmployeeCreateUpdateDTO());
+        model.addAttribute("company_name",foodCompanyService.getCompanyNameByAdminUsername(principal.getName()));
         return "create_employee";
     }
 
-    @PostMapping("/create_employee")
+    @PostMapping("/create_delivery_employee")
     public String createUser(@ModelAttribute("employee") EmployeeCreateUpdateDTO employee
             ,Principal principal){
-        employeeService.saveEmployee(employee, principal);
+        employeeService.saveEmployee(employee, principal,"FOOD");
         return "redirect:/delivery_admin";
     }
 

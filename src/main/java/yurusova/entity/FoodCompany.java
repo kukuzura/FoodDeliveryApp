@@ -24,11 +24,18 @@ public class FoodCompany {
     @JoinColumn(name = "admin_id", referencedColumnName = "id")
     private User admin;
 
-    @OneToMany
+    @OneToMany(mappedBy="foodCompany")
     private List<Menu> menu;
 
     @OneToMany(mappedBy = "foodCompany")
     private List<MenuOption> menuOptions;
+
+    @ManyToMany
+    @JoinTable(name="food_company_company",
+            joinColumns = {@JoinColumn(name="food_company_id", referencedColumnName="id")},
+            inverseJoinColumns = {@JoinColumn(name="company_id", referencedColumnName="id")}
+    )
+    private List<Company> clients;
 
     public FoodCompany()
     {

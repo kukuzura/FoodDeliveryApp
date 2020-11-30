@@ -61,4 +61,13 @@ public class CustomerCompanyService
         userService.save(user);
         companyRepository.save(company);
     }
+
+    public String getCompanyNameByAdminUsername(String adminUsername){
+        Company company = companyRepository.findCompanyByAdmin_Username(adminUsername);
+        return company.getName();
+    }
+
+    public Company getCompanyByAdminUsername(String adminUsername){
+        return companyRepository.findCompanyByAdmin_Username(adminUsername);
+    }
 }

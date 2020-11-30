@@ -60,4 +60,14 @@ public class FoodCompanyService
 		userService.save(user);
 		companyRepository.save(foodCompany);
 	}
+
+	public String getCompanyNameByAdminUsername(String adminUsername){
+		FoodCompany foodCompany = companyRepository.findFoodCompanyByAdmin_Username(adminUsername);
+		return foodCompany.getName();
+	}
+
+	public FoodCompany getFoodCompanyByName(String companyName){
+		return companyRepository.findByName(companyName);
+	}
+
 }
