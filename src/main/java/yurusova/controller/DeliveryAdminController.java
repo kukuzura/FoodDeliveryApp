@@ -34,7 +34,7 @@ public class DeliveryAdminController {
         return "redirect:/delivery_admin";
     }
 
-    @GetMapping("/employee/delete/{id}")
+    @DeleteMapping("/employee/delete/{id}")
     public String deleteEmployee(@PathVariable("id") Long id){
         employeeService.deleteEmployee(id);
         return "redirect:/delivery_admin";

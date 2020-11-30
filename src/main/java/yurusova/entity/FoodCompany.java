@@ -24,10 +24,10 @@ public class FoodCompany {
     @JoinColumn(name = "admin_id", referencedColumnName = "id")
     private User admin;
 
-    @OneToMany(cascade = CascadeType.REMOVE)
+    @OneToMany
     private List<Menu> menu;
 
-    @OneToMany(cascade = CascadeType.REMOVE,mappedBy = "foodCompany")
+    @OneToMany(mappedBy = "foodCompany")
     private List<MenuOption> menuOptions;
 
     public FoodCompany()

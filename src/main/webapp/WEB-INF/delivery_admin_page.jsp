@@ -7,12 +7,16 @@
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <html>
 <head>
     <title>Admin Delivery</title>
     <link rel="stylesheet" href="<c:url value = "/resources/css/bootstrap.min.css"/>"/>
     <link rel="stylesheet" href="<c:url value = "/resources/css/company_list.css"/>"/>
 </head>
+<script>
+    <%@include file="/WEB-INF/js/deleteDeliveryEmployee.js" %>
+</script>
 <body>
 
 <nav class="navbar navbar-light navbar-expand-md navigation-clean" style="background-color: #8270c9;">
@@ -58,7 +62,8 @@
                 <a class="table-button btn rounded-0 align-self-center" href="/employee/edit/${employee.id}">Изменить</a>
             </td>
             <td>
-                <button  href="/employee/delete/${employee.id}" class="table-button btn rounded-0 align-self-center">Удалить</button>
+                <button onclick="deleteDeliveryEmployee(${employee.id})" class="table-button btn rounded-0 align-self-center">
+                    Удалить</button>
             </td>
         </tr>
     </c:forEach>
